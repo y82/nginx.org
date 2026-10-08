@@ -8,7 +8,7 @@
 <article name="Controlling nginx"
          link="/en/docs/control.html"
          lang="en"
-         rev="7">
+         rev="8">
 
 <section>
 
@@ -248,6 +248,17 @@ the old master process, and only new processes will stay:
 36266 36264 nobody   0.0  1364 kqread nginx: worker process (nginx)
 36267 36264 nobody   0.0  1364 kqread nginx: worker process (nginx)
 </programlisting>
+</para>
+
+<para>
+<note>
+For QUIC listening sockets using
+<link doc="http/ngx_http_v3_module.xml" id="quic_bpf"/>,
+established QUIC connections can be preserved during a live binary upgrade.
+The new nginx instance inherits the QUIC BPF maps,
+allowing packets for established connections to continue to be routed
+to their original worker processes.
+</note>
 </para>
 
 <!--
